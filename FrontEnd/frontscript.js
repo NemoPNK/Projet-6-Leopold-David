@@ -20,11 +20,11 @@ function filterGallery(works) {
 }
 
 fetch("http://localhost:5678/api/works")
-.then(response => response.json())
-.then(data => {
-    allWorks  = data;
-    filterGallery(allWorks);
-})
+    .then(response => response.json())
+    .then(data => {
+        allWorks = data;
+        filterGallery(allWorks);
+    })
 
 const buttons = document.querySelectorAll('.filter button');
 
