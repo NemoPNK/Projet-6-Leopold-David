@@ -147,6 +147,21 @@ body {
 	max-width: none;
 }
 
+.editmode {
+	height: 59px;
+	width: 100vw;
+	background-color: black;
+	margin-left: calc(-50vw + 50%);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+
+.editmode p i {
+	padding: 10px;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -235,6 +250,23 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.portHeader {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.editproject {
+	display: block;
+	cursor: pointer;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.editproject p i {
+	padding-right: 5px;
 }
 
 .filter {
@@ -363,12 +395,12 @@ li:hover {
 }
 
 #forgotpw {
-  display: block ;
-  text-align: center ;
-  text-decoration: underline;
-  margin: 0px !important;
-  width: 100%;
-  cursor: pointer;
+	display: block;
+	text-align: center;
+	text-decoration: underline;
+	margin: 0px !important;
+	width: 100%;
+	cursor: pointer;
 }
 
 input[type="submit"] {

@@ -3,23 +3,23 @@ const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
 form.addEventListener("submit", async (event) => {
-  event.preventDefault(); // bloque le rechargement
+    event.preventDefault(); // bloque le rechargement
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
 
-  const response = await fetch("http://localhost:5678/api/users/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
+    const response = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (response.ok) {
-    localStorage.setItem("token", data.token);
-    window.location.href = "index.html";
-  } else {
-    alert("Email ou mot de passe incorrect");
-  }
+    if (response.ok) {
+        localStorage.setItem("token", data.token);
+        window.location.href = "index.html";
+    } else {
+        alert("Email ou mot de passe incorrect");
+    }
 });

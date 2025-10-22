@@ -3,9 +3,27 @@ const gallery = document.querySelector(".gallery");
 const filt = document.querySelector(".filter");
 
 if (token) {
-  console.log("c bon");
-} else {
-  console.log("pas bon");
+    const editmode = document.querySelector(".editmode");
+    if (editmode) editmode.style.display = "flex";
+
+    const filterBar = document.querySelector(".filter");
+    if (filterBar) filterBar.style.display = "none";
+
+    const loginLink = document.querySelector('nav li[onclick*="login.html"]');
+    if (loginLink) {
+        loginLink.textContent = "logout";
+        loginLink.onclick = () => {
+            localStorage.removeItem("token");
+            window.location.href = "index.html";
+        };
+    }
+
+    const editProject = document.querySelector(".editproject");
+    if (editProject) {
+        const editp = document.createElement("p");
+        editp.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>Modifier';
+        editProject.appendChild(editp);
+    }
 }
 
 let allWorks = [];
