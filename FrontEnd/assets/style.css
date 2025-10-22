@@ -368,6 +368,7 @@ li:hover {
   text-decoration: underline;
   margin: 0px !important;
   width: 100%;
+  cursor: pointer;
 }
 
 input[type="submit"] {

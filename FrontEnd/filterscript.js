@@ -1,5 +1,12 @@
+const token = localStorage.getItem("token");
 const gallery = document.querySelector(".gallery");
 const filt = document.querySelector(".filter");
+
+if (token) {
+  console.log("c bon");
+} else {
+  console.log("pas bon");
+}
 
 let allWorks = [];
 
