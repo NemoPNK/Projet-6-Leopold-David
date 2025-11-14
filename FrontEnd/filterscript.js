@@ -86,3 +86,71 @@ fetch("http://localhost:5678/api/categories")
         });
     });
 
+
+(() => {
+    const modal = document.querySelector('.modale');
+    const modalContent = document.querySelector('.modale-content');
+    const btnClose = document.getElementById('modale-close');
+    const opener = document.querySelector('.editproject');
+
+    function openModal() {
+        modal.classList.add('open');
+        loadModalGallery();
+        document.body.classList.add('modal-open');
+    }
+
+    function loadModalGallery() {
+        const modalGallery = document.querySelector('.modale-img');
+        if (!modalGallery) return;
+        modalGallery.innerHTML = '';
+
+        fetch('http://localhost:5678/api/works')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(work => {
+                    const figure = document.createElement('figure');
+                    figure.classList.add('modal-figure');
+
+                    const img = document.createElement('img');
+                    img.src = work.imageUrl;
+                    img.alt = work.title;
+
+                    const del = document.createElement('i');
+                    del.classList.add('fa-solid', 'fa-trash-can');
+                    del.addEventListener('click', async (e) => {
+                        try {
+                          const res = await fetch(`http://localhost:5678/api/works/${work.id}`, {
+                            method: 'DELETE',
+                            headers: { Authorization: `Bearer ${token}` }
+                          });
+                          if (res.ok || res.status === 204) {
+                            figure.remove();
+                            const mainGalleryImg = document.querySelector(`.gallery img[src="${work.imageUrl}"]`);
+                            if (mainGalleryImg) {
+                              mainGalleryImg.closest('figure').remove();
+                            }
+                          }
+                        } catch (_) {}
+                      });
+
+                    figure.appendChild(img);
+                    figure.appendChild(del);
+                    modalGallery.appendChild(figure);
+                });
+            });
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.classList.remove('modal-open');
+    }
+
+    opener && opener.addEventListener('click', openModal);
+    btnClose && btnClose.addEventListener('click', closeModal);
+
+    modal && modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+})();

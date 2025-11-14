@@ -3,7 +3,7 @@ const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
 form.addEventListener("submit", async (event) => {
-    event.preventDefault(); // bloque le rechargement
+    event.preventDefault();
 
     const email = emailInput.value;
     const password = passwordInput.value;

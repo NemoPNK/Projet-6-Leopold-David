@@ -147,6 +147,102 @@ body {
 	max-width: none;
 }
 
+.modale {
+	position: fixed;
+	inset: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, .6);
+}
+
+.modale.open {
+	display: flex;
+}
+
+.modale-content {
+	background: #fff;
+	max-height: 600px;
+	overflow: auto;
+	border-radius: 10px;
+	padding: 24px 60px;
+	position: relative;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.input-handle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 80px;
+	border-top: 1px solid #B3B3B3;
+	padding: 10px 0px 0px 0px;
+	margin: 40px 0px 0px 0px;
+}
+
+.modale-content p {
+	font-size: 24px;
+	font-weight: 400;
+	text-align: center;
+	margin: 30px 20px 40px 20px;
+}
+
+#modale-close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+#modale-add {
+	border: none;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 50%;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px;
+	margin: 0px;
+	cursor: pointer;
+}
+
+.modal-figure {
+	position: relative;
+}
+
+.modal-figure img {
+	width: 100%;
+	height: 100px;
+	object-fit: cover;
+}
+
+.modal-figure .fa-trash-can {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	background: black;
+	color: white;
+	border-radius: 3px;
+	padding: 4px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.modale-img {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
+	width: 100%;
+}
+
+body.modal-open {
+	overflow: hidden;
+}
+
 .editmode {
 	height: 59px;
 	width: 100vw;
