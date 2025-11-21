@@ -118,10 +118,11 @@ fetch("http://localhost:5678/api/categories")
                     const del = document.createElement('i');
                     del.classList.add('fa-solid', 'fa-trash-can');
                     del.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         try {
                           const res = await fetch(`http://localhost:5678/api/works/${work.id}`, {
                             method: 'DELETE',
-                            headers: { Authorization: `Bearer ${token}` }
                           });
                           if (res.ok || res.status === 204) {
                             figure.remove();
